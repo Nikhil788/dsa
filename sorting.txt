@@ -1,0 +1,106 @@
+bubbleSort sort
+	public static void bubbleSort(int[] arr, int size) {
+		int passes = 0, comps = 0;
+		//1. count no of passes
+		for(int i = 1 ; i < size ; i++) {
+			passes++;
+			//2. write loop for doing comparisions
+			for(int j = 0 ; j < size - 1 ; j++) {
+				comps++;
+				//3. compare two consecutive elements
+				if(arr[j] > arr[j + 1]) {
+					//4. if left element is greater than right then swap
+					int temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+			}
+		}
+		System.out.println("No of passes = " + passes);
+		System.out.println("No of comps = " + comps);
+}
+
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//int arr[] = {33, 22, 66, 55, 44, 11};
+		int arr[] = {11, 22, 33, 44, 55, 66};
+		System.out.println("Before sort : " + Arrays.toString(arr));
+		furtherimprovedbubbleSort(arr, arr.length);
+		System.out.println("After sort : " + Arrays.toString(arr));
+	}
+	
+insertion sort
+
+import java.util.Arrays;
+
+public class InsertionSortMain {
+	
+	public static void insertionSort(int[] arr, int size) {
+		int passes = 0;
+		//1. count the number of passes
+		for(int i = 1 ; i < size ; i++) {
+			passes++;
+			//2. take backup of element
+			int temp = arr[i];
+			int j;
+			//3. compare backuped element with all its left neighbours
+			for(j = i - 1 ; j >= 0 && arr[j] > temp ; j--) {
+				//4. if left neighbour is greater than buckuped element, then move it 1 position ahead
+				arr[j + 1] = arr[j];
+			}
+			//5.1 if array is finished insert backuped element at first position
+			//5.2 if left neighbour is less than backuped element, then insert backuped element at index(left neighbour) + 1
+			arr[j + 1] = temp;
+		}
+		System.out.println("No of passes = " + passes);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//int arr[] = {55, 44, 22, 66, 11, 33};
+		int arr[] = {11, 22, 33, 44, 55, 66};
+		
+		System.out.println("Before sort : " + Arrays.toString(arr));
+		insertionSort(arr, arr.length);
+		System.out.println("After sort : " + Arrays.toString(arr));
+	}
+
+}
+
+
+
+selection sort
+
+import java.util.Arrays;
+
+public class SelectionSortMain {
+
+	public static void selectionSort(int[] arr, int size) {
+		//1. count number of passes
+		for(int i = 0 ; i < size - 1 ; i++) {
+			//2. select the position - i
+			//3. count number of comparisions
+			for(int j = i + 1 ; j < size ; j++) {
+				//4. compare selected position element with other element
+				if(arr[i] > arr[j])
+				{
+					//5. if selected position element is greater than other element then swap
+					int temp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = temp;
+				}
+			}
+			
+		}
+	}	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {44, 11, 55, 22, 66, 33};
+		
+		System.out.println("Before sort : " + Arrays.toString(arr));
+		selectionSort(arr, arr.length);
+		System.out.println("After sort : " + Arrays.toString(arr));
+	}
+
+}
